@@ -1,15 +1,16 @@
 # Ignore SQLite database files
-./src/home/*.sqlite3
+./src/*.sqlite3
 
 # Ignore environment files
 .env
+
+# Ignore virtual environment
+.venv/
+
 
 # Ignore Python cache files
 __pycache__/
 *.pyc
 
-# Ignore virtual environment
-.venv/
-
 # Ignore specific folder inside src
-./src/__pycache__/
+src/__pycache__/
