@@ -1,0 +1,5 @@
+"/src/*.sqlite3"
+".env"
+"__pycache__"
+".venv"
+"/src/__pycache__"

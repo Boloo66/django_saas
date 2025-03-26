@@ -1,0 +1,26 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "**/*.html": "html",
+      "**/templates/*/*.html": "django-html",
+      "**/templates/*": "django-txt",
+      "**/requirements{/**,*}.{txt,in}": "pip-requirements"
+    },
+    "emmet.includeLanguages": {
+      "django-html": "html"
+    },
+    "[django-html]": {
+      "editor.defaultFormatter": "batisteo.vscode-django",
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.wordWrap": "on",
+      "editor.formatOnPaste": false
+    },
+    "emmet.triggerExpansionOnTab": true
+  }
+}
