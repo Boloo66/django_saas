@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os
+from decouple import config
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%@wvl0@v%2@^%*nbjam51x&frc()!r39lt0iwhu4@0zski+6)t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+#DEBUG = os.environ.get('DJANGO_DEBUG') == True
+DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = [".railway.app"]
+ALLOWED_HOSTS = ["railway.app"]
 
 if DEBUG:
     ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
@@ -83,6 +85,11 @@ DATABASES = {
     }
 }
 
+DATABASE_URI=config("DATABASE_URI", cast=bool)
+
+if DATABASE_URI is not None:
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(default=DATABASE_URI, conn_max_age=600, conn_health_checks=True)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
