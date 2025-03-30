@@ -85,9 +85,11 @@ DATABASES = {
     }
 }
 
-DATABASE_URI=config("DATABASE_URI", cast=bool)
+DATABASE_URI=config("DATABASE_URI", default="", cast=str)
 
-if DATABASE_URI is not None:
+print("Database URI:", DATABASE_URI)
+
+if DATABASE_URI:
     import dj_database_url
     DATABASES['default'] = dj_database_url.config(default=DATABASE_URI, conn_max_age=600, conn_health_checks=True)
 
@@ -120,6 +122,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://railway.app"]
 
 
 # Static files (CSS, JavaScript, Images)

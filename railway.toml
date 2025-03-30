@@ -11,4 +11,4 @@ watchPatterns = [
 # [build]
 # builder = "nixpacks
 # [deploy]
-# startCommand = ""
+# startCommand = "gunicorn -w 3 -b "[::]:8000" wsgi:application"
