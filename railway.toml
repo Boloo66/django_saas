@@ -1,0 +1,14 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "./Dockerfile"
+watchPatterns = [
+    "requirements.txt",
+    "src/*",
+    "railway.toml",
+    "Dockerfile",
+]
+
+# [build]
+# builder = "nixpacks
+# [deploy]
+# startCommand = ""

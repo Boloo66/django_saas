@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    container_name: my_django_app
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - gunicorn_socket:/run/gunicorn
+      - static_volume:/vol/static
+      - media_volume:/vol/media
+    expose:
+      - "8000"
+
+  db:
+    image: postgres:15
+    container_name: my_postgres_db
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  nginx:
+    image: nginx:latest
+    container_name: my_nginx
+    restart: always
+    depends_on:
+      - web
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - gunicorn_socket:/run/gunicorn
+      - static_volume:/vol/static
+      - media_volume:/vol/media
+
+volumes:
+  pg_data:
+  gunicorn_socket:
+  static_volume:
+  media_volume:
