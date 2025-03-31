@@ -86,9 +86,9 @@ DATABASES = {
     }
 }
 
-DATABASE_URI=config("DATABASE_URI", default="", cast=str)
+DATABASE_URI=config("DATABASE_URI", default=None,)
 
-if DATABASE_URI:
+if DATABASE_URI is not None:
     import dj_database_url
     DATABASES['default'] = dj_database_url.config(default=DATABASE_URI, conn_max_age=600, conn_health_checks=True)
 
@@ -122,7 +122,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://railway.app"]
+CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://railway.app", "https://djangosaas-production-bdc9.up.railway.app/"]
 
 
 # Static files (CSS, JavaScript, Images)
