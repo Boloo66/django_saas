@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-%@wvl0@v%2@^%*nbjam51x&frc()!r39lt0iwhu4@0zski+6)t
 #DEBUG = os.environ.get('DJANGO_DEBUG') == True
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["railway.app", "https://djangosaas-production-bdc9.up.railway.app"]
+ALLOWED_HOSTS = ["railway.app", "djangosaas-production-bdc9.up.railway.app"]
 
 if DEBUG:
     ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
