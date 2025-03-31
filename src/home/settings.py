@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'commando'
 ]
 
 MIDDLEWARE = [
@@ -87,8 +88,6 @@ DATABASES = {
 
 DATABASE_URI=config("DATABASE_URI", default="", cast=str)
 
-print("Database URI:", DATABASE_URI)
-
 if DATABASE_URI:
     import dj_database_url
     DATABASES['default'] = dj_database_url.config(default=DATABASE_URI, conn_max_age=600, conn_health_checks=True)
@@ -130,7 +129,25 @@ CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://railway.app"]
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_BASE_DIR = BASE_DIR / 'static'
+STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / 'vendors'
 
+# sources(s) for python manage.py collectstatic
+STATICFILES_DIRS = [
+    STATICFILES_BASE_DIR,
+    STATICFILES_VENDOR_DIR
+]
+
+#outputs(s) for python manage.py collectstatic
+STATIC_ROOT = BASE_DIR.parent / 'local_cdn'
+
+# if not DEBUG:
+#     STATIC_ROOT = BASE_DIR / 'prod_cdn'
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR /'media'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

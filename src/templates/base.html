@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Saas Project{% endblock title %}</title>
-</head>
-<body>
-  {% block content %}
-    <h1>Hello Django</h1>
-  {% endblock content %}
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Saas Project{% endblock title %}</title>
+    {% include 'base/css.html'%}
+  </head>
+  <body>
+    {% include 'components/NavBar.html'%} {% block content %}
+      <h1>Hello Django</h1>
+      <p>Welcome to base.html</p>
+    {% endblock content %} {% include 'base/js.html'%}
+  </body>
 </html>
