@@ -131,6 +131,7 @@ CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://railway.app"]
 STATIC_URL = 'static/'
 STATICFILES_BASE_DIR = BASE_DIR / 'static'
 STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / 'vendors'
+STATICFILES_VENDOR_DIR.mkdir(parents=True, exist_ok=True)
 
 # sources(s) for python manage.py collectstatic
 STATICFILES_DIRS = [
