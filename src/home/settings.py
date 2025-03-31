@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-%@wvl0@v%2@^%*nbjam51x&frc()!r39lt0iwhu4@0zski+6)t
 #DEBUG = os.environ.get('DJANGO_DEBUG') == True
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ["railway.app"]
+ALLOWED_HOSTS = ["railway.app", "https://djangosaas-production-bdc9.up.railway.app"]
 
 if DEBUG:
     ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
@@ -122,7 +122,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-CSRF_TRUSTED_ORIGINS = ["http://127.0.0.1:8000", "https://railway.app", "https://djangosaas-production-bdc9.up.railway.app/"]
+CSRF_TRUSTED_ORIGINS = ["https://railway.app", "https://djangosaas-production-bdc9.up.railway.app"]
 
 
 # Static files (CSS, JavaScript, Images)

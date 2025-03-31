@@ -32,6 +32,8 @@ ARG PROJECT_NAME="home"
 RUN printf "#!/bin/bash\n\n" > ./paracode_runner.sh && \
     printf "RUN_PORT=\"\${PORT:-8000}\"\n\n" >> ./paracode_runner.sh && \
     printf "python manage.py migrate --no-input\n" >> ./paracode_runner.sh && \
+    printf "python manage.py vendor_pull\n" >> ./paracode_runner.sh && \
+    printf "python manage.py collectstatic --no-input\n" >> ./paracode_runner.sh && \    
     printf "gunicorn -w 3 -b \"[::]:\${RUN_PORT}\" ${PROJECT_NAME}.wsgi:application\n" >> ./paracode_runner.sh
 
 RUN apt-get remove --purge -y \
