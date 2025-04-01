@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>User Login</h2>
+  <form  method="POST">
+
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  {% if request.GET.next %}
+    <input type=hidden  value={{ request.GET.next }} name='next'>
+  {% endif %}
+  <button>Submit</button>
+  </form>
+
+  {% comment %} <form method="POST" action="{% url "auth:auth.login" %}">
+  {% csrf_token %}
+
+    <input class="user" type="text" name="username" placeholder="username">
+    <label for="pass"></label>
+    <input class="pass" type="password" name="password" placeholder="password">
+
+    <button>submit</button>
+  </form> {% endcomment %}
+{% endblock content %}
